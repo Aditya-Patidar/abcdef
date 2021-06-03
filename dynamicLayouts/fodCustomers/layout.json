@@ -1,0 +1,57 @@
+{
+  "dynamicLayoutVersion": "2010.0.0",
+  "layoutTypes": {
+    "fodCustomers": {
+      "kind": "operationRef",
+      "serviceId": "fodCustomers",
+      "operations": [
+        "get_fodCustomers"
+      ]
+    }
+  },
+  "layouts": {
+    "isDefault": {
+      "description": "Default Rule",
+      "type": "fodCustomers",
+      "expression": "default"
+    },
+    "viewCustomerLayout": {
+      "type": "fodCustomers",
+      "layoutType": "form",
+      "rules": [
+        "isDefault"
+      ],
+      "layouts": {
+        "default": {
+          "layoutType": "form",
+          "layout": {
+            "displayProperties": [
+              "CustomerNumber",
+              "EmailAddress",
+              "billingAddress",
+              "shippingAddress"
+            ]
+          }
+        }
+      },
+      "label": "View Customer Layout",
+      "fieldTemplateMap": {
+        "billingAddress": "addressTemplate",
+        "shippingAddress": "addressTemplate"
+      }
+    }
+  },
+  "templates": {
+    "addressTemplate": {
+      "title": "Address Template",
+      "description": "",
+      "extensible": "byReference",
+      "@dt": {
+        "type": "field"
+      },
+      "dependencies": [
+        "ojs/ojinputtext"
+      ]
+    }
+  }
+}
